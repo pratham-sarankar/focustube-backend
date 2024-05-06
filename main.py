@@ -2,7 +2,7 @@ import json
 
 import starlette.websockets
 from fastapi import FastAPI, WebSocket
-from youtubesearchpython import VideosSearch, Video, ResultMode
+from youtubesearchpython import VideosSearch, Video, ResultMode, Suggestions
 import uuid
 
 app = FastAPI()
@@ -19,6 +19,11 @@ def greet(name: str):
 def get_video(video_id: str):
     data = Video.getInfo(f'https://youtu.be/{video_id}', mode=ResultMode.json)
     return data
+
+
+@app.get("/suggestions/{query}")
+def search(query: str):
+    return Suggestions(language='en', region='US').get(query, mode=ResultMode.dict)
 
 
 @app.websocket("/search/ws")
