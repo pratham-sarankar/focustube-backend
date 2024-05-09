@@ -22,10 +22,12 @@ class FocusTubeSearchService:
 
             # Validate Search Preferences
             print(data)
-            search_type = SearchType(data['type']) if 'type' in data else None
+            print('type' in data, )
+            search_type = SearchType(data['type']) if ('type' in data and data['type'] is not None) else None
             search_filter = UploadDateFilter(data['filter']) if (
                     'filter' in data and data['filter'] is not None) else None
-            search_order = SortOrder(data['order']) if 'order' in data else SortOrder.relevance
+            search_order = SortOrder(data['order']) if (
+                        'order' in data and data['order'] is not None) else SortOrder.relevance
 
             search_preference = SearchPreference(search_type, search_filter, search_order)
             sp_code = search_preference.get_code()
