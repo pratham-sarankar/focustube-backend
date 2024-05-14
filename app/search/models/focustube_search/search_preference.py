@@ -1,4 +1,4 @@
-from app.search.models.enums import SearchType, UploadDateFilter, SortOrder
+from app.search.models.focustube_search.enums import SearchType, UploadDateFilter, SortOrder
 
 
 class SearchPreference:

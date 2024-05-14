@@ -1,3 +1,2 @@
-from .enums import *
-from .search_preference import SearchPreference
-from .search_connection import SearchConnection
+from app.search.models.focustube_search.enums import *
+from app.search.models.focustube_search.search_connection import SearchConnection
