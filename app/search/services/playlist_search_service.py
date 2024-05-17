@@ -34,11 +34,11 @@ class PlaylistSearchService:
             await websocket.send_json({"success": False, "message": "No search object found"})
             return
         if not search_obj.hasMoreVideos:
-            await websocket.send_json({"success": True, "data": []})
+            await websocket.send_json({"success": True, "data": [], "info": search_obj.info['info']})
             return
         else:
             search_obj.getNextVideos()
-            await websocket.send_json({"success": True, "data": search_obj.videos})
+            await websocket.send_json({"success": True, "data": search_obj.videos, "info": search_obj.info['info']})
 
     def on_disconnect(self, websocket: WebSocket):
         user_id = next(key for key, value in self.connected_users.items() if value.websocket == websocket)
