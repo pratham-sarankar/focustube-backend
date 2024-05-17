@@ -21,8 +21,6 @@ class FocusTubeSearchService:
             user_id = next(key for key, value in self.connected_users.items() if value.websocket == websocket)
 
             # Validate Search Preferences
-            print(data)
-            print('type' in data, )
             search_type = SearchType(data['type']) if ('type' in data and data['type'] is not None) else None
             search_filter = UploadDateFilter(data['filter']) if (
                     'filter' in data and data['filter'] is not None) else None
@@ -31,7 +29,6 @@ class FocusTubeSearchService:
 
             search_preference = SearchPreference(search_type, search_filter, search_order)
             sp_code = search_preference.get_code()
-            print(data)
             search_obj: CustomSearch = CustomSearch(data['q'], sp_code, limit=10)
             self.connected_users[user_id].search_obj = search_obj
             results = search_obj.result()

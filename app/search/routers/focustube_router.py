@@ -34,7 +34,6 @@ async def search(websocket: WebSocket):
             data = await websocket.receive_json()
             command = data.get("command")
             if command == "initial":
-                print(data)
                 await focustube_search_service.init_search(data['data'], websocket)
             elif command == "next":
                 await focustube_search_service.next_search(websocket)

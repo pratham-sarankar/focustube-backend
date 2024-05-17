@@ -1,3 +1,4 @@
 from .focustube_search_service import FocusTubeSearchService
 from .playlist_search_service import PlaylistSearchService
 from .channel_search_response import ChannelSearchService
+from .comment_search_service import CommentSearchService
