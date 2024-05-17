@@ -1,4 +1,5 @@
-from youtubesearchpython import Comments
+from youtube_comment_downloader import YoutubeCommentDownloader, SORT_BY_RECENT
+from itertools import islice
 
 
 class CommentSearchService:
@@ -6,9 +7,9 @@ class CommentSearchService:
         self.id = id
 
     def search(self):
-        comments = Comments("https://www.youtube.com/watch?v=2V7yPrxJ8Ck")
-        while comments.hasMoreComments:
-            print("Fetching more comments")
-            comments.getNextComments()
-            print(comments.comments["result"])
-        return comments.comments["result"]
+        downloader = YoutubeCommentDownloader()
+        comments = downloader.get_comments(self.id, sort_by=SORT_BY_RECENT)
+        result = []
+        for comment in islice(comments, 20):
+            result.append(comment)
+        return result
