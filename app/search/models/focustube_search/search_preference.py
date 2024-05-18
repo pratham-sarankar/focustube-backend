@@ -116,5 +116,41 @@ class SearchPreference:
             SearchPreference(SearchType.films, UploadDateFilter.thisYear, SortOrder.uploadDate): "CAISBAgFEAQ%3D",
             SearchPreference(SearchType.films, UploadDateFilter.thisYear, SortOrder.viewCount): "CAMSBAgFEAQ%3D",
             SearchPreference(SearchType.films, UploadDateFilter.thisYear, SortOrder.rating): "CAESBAgFEAQ%3D",
+
+            # Search Type : shorts, Date Filter : None, and every possible sort order
+            SearchPreference(SearchType.shorts, None, SortOrder.relevance): "CAASBBABGAE%253D",
+            SearchPreference(SearchType.shorts, None, SortOrder.uploadDate): "CAISBBABGAE%253D",
+            SearchPreference(SearchType.shorts, None, SortOrder.viewCount): "CAMSBBABGAE%253D",
+            SearchPreference(SearchType.shorts, None, SortOrder.rating): "CAESBBABGAE%253D",
+
+            # Search Type : shorts, Date Filter : Last hour, and every possible sort order
+            SearchPreference(SearchType.shorts, UploadDateFilter.lastHour, SortOrder.relevance): "",
+            SearchPreference(SearchType.shorts, UploadDateFilter.lastHour, SortOrder.uploadDate): "",
+            SearchPreference(SearchType.shorts, UploadDateFilter.lastHour, SortOrder.viewCount): "",
+            SearchPreference(SearchType.shorts, UploadDateFilter.lastHour, SortOrder.rating): "",
+
+            # Search Type : shorts, Date Filter : Today, and every possible sort order
+            SearchPreference(SearchType.shorts, UploadDateFilter.today, SortOrder.relevance): "",
+            SearchPreference(SearchType.shorts, UploadDateFilter.today, SortOrder.uploadDate): "",
+            SearchPreference(SearchType.shorts, UploadDateFilter.today, SortOrder.viewCount): "",
+            SearchPreference(SearchType.shorts, UploadDateFilter.today, SortOrder.rating): "",
+
+            # Search Type : shorts, Date Filter : This week, and every possible sort order
+            SearchPreference(SearchType.shorts, UploadDateFilter.thisWeek, SortOrder.relevance): "",
+            SearchPreference(SearchType.shorts, UploadDateFilter.thisWeek, SortOrder.uploadDate): "",
+            SearchPreference(SearchType.shorts, UploadDateFilter.thisWeek, SortOrder.viewCount): "",
+            SearchPreference(SearchType.shorts, UploadDateFilter.thisWeek, SortOrder.rating): "",
+
+            # Search Type : shorts, Date Filter : This month, and every possible sort order
+            SearchPreference(SearchType.shorts, UploadDateFilter.thisMonth, SortOrder.relevance): "",
+            SearchPreference(SearchType.shorts, UploadDateFilter.thisMonth, SortOrder.uploadDate): "",
+            SearchPreference(SearchType.shorts, UploadDateFilter.thisMonth, SortOrder.viewCount): "",
+            SearchPreference(SearchType.shorts, UploadDateFilter.thisMonth, SortOrder.rating): "",
+
+            # Search Type : shorts, Date Filter : This year, and every possible sort order
+            SearchPreference(SearchType.shorts, UploadDateFilter.thisYear, SortOrder.relevance): "",
+            SearchPreference(SearchType.shorts, UploadDateFilter.thisYear, SortOrder.uploadDate): "",
+            SearchPreference(SearchType.shorts, UploadDateFilter.thisYear, SortOrder.viewCount): "",
+            SearchPreference(SearchType.shorts, UploadDateFilter.thisYear, SortOrder.rating): "",
         }
         return search_preferences.get(sp)

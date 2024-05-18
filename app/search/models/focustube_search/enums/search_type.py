@@ -6,3 +6,4 @@ class SearchType(str, Enum):
     channels = 'channels'
     playlists = 'playlists'
     films = 'films'
+    shorts = "shorts"
