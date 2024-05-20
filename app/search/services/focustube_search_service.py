@@ -26,10 +26,12 @@ class FocusTubeSearchService:
                     'filter' in data and data['filter'] is not None) else None
             search_order = SortOrder(data['order']) if (
                     'order' in data and data['order'] is not None) else SortOrder.relevance
-
             search_preference = SearchPreference(search_type, search_filter, search_order)
             sp_code = search_preference.get_code()
-            search_obj: CustomSearch = CustomSearch(data['q'], sp_code, limit=10)
+            query = data['q']
+            if search_type == SearchType.shorts:
+                query += " #shorts"
+            search_obj: CustomSearch = CustomSearch(query, searchPreferences=sp_code, limit=10)
             self.connected_users[user_id].search_obj = search_obj
             results = search_obj.result()
             await websocket.send_json({"success": True, "data": results['result']})
