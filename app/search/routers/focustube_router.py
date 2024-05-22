@@ -2,15 +2,23 @@ from fastapi import APIRouter, WebSocket
 from youtubesearchpython import Video, Suggestions, ResultMode
 import starlette.websockets
 from ..services import FocusTubeSearchService
+from youtubesearchpython import Search, ResultMode
 import json
 
 focustube_router = APIRouter()
 focustube_search_service = FocusTubeSearchService()
 
 
-@focustube_router.get("/{name}")
-def greet(name: str):
-    return {"message": f"Hello, {name}"}
+@focustube_router.get("/")
+def greet():
+    return {"message": "FocusTube server is running"}
+
+
+# Temporarily adding this route to test the speed of http vs websocket
+@focustube_router.get("/search/{query}")
+def search(query: str):
+    search_obj = Search(query, limit=10)
+    return search_obj.result(mode=ResultMode.dict)
 
 
 @focustube_router.get("/video/{video_id}")
